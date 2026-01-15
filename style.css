@@ -1,0 +1,241 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Dancing Script','Segoe UI',sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+    url("bg.jpg");
+  background-size:cover;
+  background-position:center;
+}
+
+/* ========== INTRO ================= */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at center,
+      rgba(255,215,0,.35),
+      rgba(0,0,0,.95) 70%);
+  animation:introFade 2.4s ease-out forwards;
+}
+
+/* ================= CARD ================= */
+.card{
+  position:relative;
+  width:390px;
+  padding:46px 38px;
+  text-align:center;
+
+  /* KÍNH MỜ ĐỤC */
+background:rgba(119, 129, 135, 0.72);
+  backdrop-filter: blur(22px) saturate(120%);
+  -webkit-backdrop-filter: blur(22px) saturate(120%);
+
+  border-radius:30px;
+
+    box-shadow:
+      0 40px 90px rgba(0,0,0,.85),
+      inset 0 0 0 1px rgba(255,255,255,.08);
+
+  opacity:0;
+  animation:cardIn 1.1s cubic-bezier(.2,.8,.2,1) 2s forwards;
+}
+
+
+/* ===== BORDER GOLD ===== */
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:28px;
+    padding:1.6px;
+    pointer-events:none;
+
+    background:linear-gradient(
+      135deg,
+      rgba(255,215,0,.9),
+      rgba(255,215,0,.25),
+      rgba(255,215,0,.7)
+    );
+
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+  }
+
+/* ================= TEXT ================= */
+.subtitle{
+  font-family:'Montserrat',sans-serif;
+  font-size:12px;
+  letter-spacing:3px;
+  color:#ddd;
+}
+
+h1{
+  margin:12px 0;
+  font-size:44px;
+  font-style:italic;
+}
+
+.gold{
+  background:linear-gradient(120deg,#f5c16c,#fff7d1,#ffd700);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:goldPulse 3.5s ease-in-out infinite;
+}
+
+.cap{
+  font-size:20px;
+  color:#ffd700;
+  margin-bottom:6px;
+  animation:floatText 4s ease-in-out infinite;
+}
+
+.name{
+  font-size:26px;
+  color:#fff;
+  margin-bottom:20px;
+  animation:
+    floatText 5s ease-in-out infinite,
+    nameGlow 3s ease-in-out infinite;
+}
+
+.divider{
+  width:90px;
+  height:3px;
+  margin:18px auto;
+  background:linear-gradient(90deg,#f5c16c,#fff);
+}
+
+.info{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;   /* FIX */
+  margin-bottom:16px;
+}
+
+.info div{
+  width:30%;
+  text-align:center;    /* FIX */
+}
+
+.info small{
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;
+  letter-spacing:1.5px;
+  color:#ddd;
+}
+
+.info strong{
+  display:block;
+  margin-top:6px;
+  font-size:18px;
+  font-weight:500;
+  color:#fff;
+}
+.place{
+  margin-top:6px;
+  font-size:14px;
+  color:#eee;
+  opacity:.9;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+
+  line-height:1.2;
+}
+
+
+/* ================= DECOR ================= */
+.decor{
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+}
+
+.balloon{
+  width:120px;
+  opacity:.9;
+  animation:floatDecor 6s ease-in-out infinite;
+}
+
+.balloon.left{
+  left:6%;
+  top:18%;
+}
+
+.balloon.right{
+  right:6%;
+  top:20%;
+  animation-delay:2s;
+}
+
+.confetti{
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.15;
+  animation:fadeConfetti 5s ease-in-out infinite;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes introFade{
+  0%{opacity:1;}
+  70%{opacity:1;}
+  100%{opacity:0;}
+}
+
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(50px) scale(.92);}
+  to{opacity:1;transform:none;}
+}
+
+@keyframes floatText{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+
+@keyframes floatDecor{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
+}
+
+@keyframes fadeConfetti{
+  0%,100%{opacity:.12;}
+  50%{opacity:.22;}
+}
+
+@keyframes goldPulse{
+  0%,100%{text-shadow:0 0 10px rgba(255,215,0,.4);}
+  50%{text-shadow:0 0 22px rgba(255,215,0,.9);}
+}
+
+@keyframes nameGlow{
+  0%,100%{text-shadow:0 0 8px rgba(255,215,0,.4);}
+  50%{text-shadow:0 0 18px rgba(255,215,0,.85);}
+}
+
+
+
+
+
+
